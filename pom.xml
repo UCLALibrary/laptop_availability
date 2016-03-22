@@ -35,7 +35,30 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
+  <repositories>
+  <repository>
+    <id>maven.oracle.com</id>
+    <releases>
+      <enabled>true</enabled>
+    </releases>
+    <snapshots>
+      <enabled>false</enabled>
+    </snapshots>
+    <url>https://maven.oracle.com</url>
+    <layout>default</layout>
+  </repository>
+  repository>
+      <id>http://mvnrepository.com/</id>
+      <url>http://mvnrepository.com</url>
+    </repository>
+</repositories>
+<pluginRepositories>
+  <pluginRepository>
+    <id>maven.oracle.com</id>
+    <url>https://maven.oracle.com</url>
+  </pluginRepository>
+</pluginRepositories>
+<dependencies>
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
@@ -86,35 +109,45 @@
       <version>11.1.2.2.0</version>
       <type>pom</type>
       <scope>compile</scope>
-    </dependency-->
+    </dependency>
     <dependency>
       <groupId>oracle.jdeveloper.library</groupId>
       <artifactId>AeonMimepull</artifactId>
       <version>11.1.2.2.0</version>
       <type>pom</type>
       <scope>compile</scope>
+    </dependency-->
+    <dependency>
+    	<groupId>org.jvnet.mimepull</groupId>
+    	<artifactId>mimepull</artifactId>
+    	<version>1.9.6</version>
     </dependency>
     <dependency>
+      <groupId>com.oracle.jdbc</groupId>
+      <artifactId>ojdbc7</artifactId>
+      <version>12.1.0.2</version>
+    </dependency>
+    <!--dependency>
       <groupId>oracle.jdeveloper.library</groupId>
       <artifactId>AeonOracle</artifactId>
       <version>11.1.2.2.0</version>
       <type>pom</type>
       <scope>compile</scope>
     </dependency>
-    <!--dependency>
+    <dependency>
       <groupId>oracle.jdeveloper.library</groupId>
       <artifactId>AeonSpring</artifactId>
       <version>11.1.2.2.0</version>
       <type>pom</type>
       <scope>compile</scope>
-    </dependency-->
+    </dependency>
     <dependency>
       <groupId>oracle.jdeveloper.library</groupId>
       <artifactId>JSP-Runtime</artifactId>
       <version>11.1.2.2.0</version>
       <type>pom</type>
       <scope>compile</scope>
-    </dependency>
+    </dependency-->
   </dependencies>
   <parent>
     <groupId>Application1</groupId>
