@@ -1,0 +1,7 @@
+### Java in general ###
+*.class
+
+### JDeveloper-specific ###
+# default output directories
+classes/
+deploy/
