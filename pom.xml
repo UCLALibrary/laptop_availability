@@ -49,7 +49,7 @@
     <layout>default</layout>
   </repository>
   <repository>
-      <id>http://mvnrepository.com/</id>
+      <id>mvnrepository.com</id>
       <url>http://mvnrepository.com</url>
     </repository>
 </repositories>
