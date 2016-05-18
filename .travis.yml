@@ -1,0 +1,9 @@
+language: java
+jdk:
+- oraclejdk7
+before_install:
+- cp settings*.xml ~/.m2/
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: scripts/deploy.sh
