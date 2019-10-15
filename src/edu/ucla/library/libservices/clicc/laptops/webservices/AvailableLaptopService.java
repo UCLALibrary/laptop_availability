@@ -1,5 +1,6 @@
 package edu.ucla.library.libservices.clicc.laptops.webservices;
 
+import edu.ucla.library.libservices.clicc.laptops.generators.AvailableItemsGenerator;
 import edu.ucla.library.libservices.clicc.laptops.generators.AvailableLaptopGenerator;
 
 import javax.servlet.ServletConfig;
@@ -22,14 +23,15 @@ public class AvailableLaptopService
 
   @GET
   @Produces( "application/json" )
-  public AvailableLaptopGenerator getLaptops()
+  public AvailableItemsGenerator getLaptops()
   {
-    AvailableLaptopGenerator docMaker;
+    //AvailableLaptopGenerator docMaker;
+    AvailableItemsGenerator docMaker;
 
-    docMaker = new AvailableLaptopGenerator();
+    docMaker = new AvailableItemsGenerator();
 
     docMaker.setDbName( config.getServletContext().getInitParameter( "datasource.vger" ) );
-    docMaker.prepLaptops();
+    docMaker.prepItems();
 
     return docMaker;
   }

@@ -1,6 +1,8 @@
 package edu.ucla.library.libservices.clicc.laptops.testing;
 
+import edu.ucla.library.libservices.clicc.laptops.beans.AvailableItems;
 import edu.ucla.library.libservices.clicc.laptops.beans.AvailableLaptop;
+import edu.ucla.library.libservices.clicc.laptops.generators.AvailableItemsGenerator;
 import edu.ucla.library.libservices.clicc.laptops.generators.AvailableLaptopGenerator;
 
 import java.util.List;
@@ -17,15 +19,16 @@ public class Tester
   public static void main( String[] args )
     throws JSONException
   {
-    AvailableLaptopGenerator generator;
-    //List<AvailableLaptop> laptops;
-    String laptops;
-    
-    generator = new AvailableLaptopGenerator();
+    AvailableItemsGenerator generator;
+    List<AvailableItems> laptops;
+    //String laptops;
+
+    generator = new AvailableItemsGenerator();
     generator.setDbName( "" );
-    laptops = generator.getWidgetLaptops();
-    
-    //for ( AvailableLaptop theLaptop : laptops )
-      System.out.println( laptops );
+    //laptops = generator.getWidgetLaptops();
+    laptops = generator.getItems();
+
+    for ( AvailableItems theLaptop : laptops )
+      System.out.println( theLaptop.getLocation() + "\t" + theLaptop.getChromeBooks() );
   }
 }

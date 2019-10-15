@@ -39,8 +39,8 @@ public class DataSourceFactory
 
     ds = new DriverManagerDataSource();
     ds.setDriverClassName( "com.microsoft.sqlserver.jdbc.SQLServerDriver" );
-    ds.setUrl( "longisland_url" );
-    ds.setUsername( "MAGI_user" );
+    ds.setUrl( "url" );
+    ds.setUsername( "user" );
     ds.setPassword( "pwd" );
 
     return ds;
