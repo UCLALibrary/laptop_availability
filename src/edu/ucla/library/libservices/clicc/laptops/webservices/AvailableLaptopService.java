@@ -10,6 +10,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value = "/available")
 @Path( "/available" )
 public class AvailableLaptopService
 {
@@ -23,6 +27,8 @@ public class AvailableLaptopService
 
   @GET
   @Produces( "application/json" )
+  @ApiOperation(value = "returns counts of available laptops/tablets", httpMethod = "GET",
+                response = AvailableItemsGenerator.class, responseContainer = "List")
   public AvailableItemsGenerator getLaptops()
   {
     //AvailableLaptopGenerator docMaker;
