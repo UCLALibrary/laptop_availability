@@ -7,15 +7,10 @@ SFTP_PROJECT=laptops
 SFTP_TARGET_DIR=${SFTP_PROJECT}
 SFTP_FILESPEC=${SFTP_PROJECT}.war
 
-# Decrypt our private key, using travis encryption.
-# -K and -iv apparently set by travis.
-openssl aes-256-cbc -K $encrypted_7270e623501c_key -iv $encrypted_7270e623501c_iv \
-  -in id_rsa_appdeploy.enc -out id_rsa_appdeploy -d
-
-# Set required permissions for decrypted private key
-# and move to required location.
-chmod 600 id_rsa_appdeploy
-mv id_rsa_appdeploy ~/.ssh/id_rsa
+# Put in place private key from Travis encrypted env variable.
+# Set required permissions for private key.
+echo "$TRAVIS_WS_SSH_PRIV_KEY" > ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
 
 # Add sftp site to known_hosts to avoid permanent hang on first sftp connection
 ssh-keyscan appdeploy-sftp.library.ucla.edu >> ~/.ssh/known_hosts
@@ -23,7 +18,7 @@ ssh-keyscan appdeploy-sftp.library.ucla.edu >> ~/.ssh/known_hosts
 # Upload file(s) to sftp site in project-specific directory
 # Use sftp's batch mode (-b, with - for stdin) to throw/ignore errors:
 ## commands starting with - will show error messages, but not cause sftp
-## to exit if an error occurs on those commands.  See man sftp for details. 
+## to exit if an error occurs on those commands.  See man sftp for details.
 
 (
   # sftp will exit if cd fails - must have/use build directory
@@ -40,4 +35,3 @@ ssh-keyscan appdeploy-sftp.library.ucla.edu >> ~/.ssh/known_hosts
   echo "pwd"
   echo "ls -l"
 ) | sftp -b - ${SFTP_USER}@${SFTP_SERVER}
-
