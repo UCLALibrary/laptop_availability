@@ -487,7 +487,7 @@
       <type>jar</type>
       <scope>test</scope>
     </dependency>
-    <dependency>
+    <!--dependency>
       <groupId>com.oracle.adf.library</groupId>
       <artifactId>JSP-Runtime</artifactId>
       <version>12.2.1-4-0</version>
@@ -500,6 +500,6 @@
       <version>12.2.1-4-0</version>
       <type>pom</type>
       <scope>provided</scope>
-    </dependency>
+    </dependency-->
   </dependencies>
 </project>
