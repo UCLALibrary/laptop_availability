@@ -130,7 +130,7 @@ under the License.
       <passphrase>optional; leave empty if not used.</passphrase>
     </server>
     -->
-	<server>
+	<!--server>
 	    <id>maven.oracle.com</id>
 	    <username>drickard1967@library.ucla.edu</username>
 	    <password>{UHD51VJeI5wHJ90UnIS6LEJxaVi3d3AliCfWh+0yY9s=}</password>
@@ -151,7 +151,7 @@ under the License.
 		</all>
 	      </httpConfiguration>
 	    </configuration>
-	  </server>
+	  </server-->
   </servers>
 
   <!-- mirrors
