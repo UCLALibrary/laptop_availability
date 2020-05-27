@@ -501,5 +501,19 @@
       <version>2.0.3</version>
       <scope>test</scope>
     </dependency>
+    <!--dependency>
+      <groupId>com.oracle.adf.library</groupId>
+      <artifactId>JSP-Runtime</artifactId>
+      <version>12.2.1-4-0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.adf.library</groupId>
+      <artifactId>Servlet-Runtime</artifactId>
+      <version>12.2.1-4-0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency-->
   </dependencies>
 </project>
