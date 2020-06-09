@@ -58,4 +58,17 @@ public class DataSourceFactory
 
     return ds;
   }
+
+  public static DriverManagerDataSource createTestSource()
+  {
+    DriverManagerDataSource ds;
+
+    ds = new DriverManagerDataSource();
+    ds.setDriverClassName("oracle.jdbc.OracleDriver");
+    ds.setUrl("jdbc:oracle:thin:@ils-db-test.library.ucla.edu:1521:VGER");
+    ds.setUsername("ucla_preaddb");
+    ds.setPassword("ucla_preaddb");
+
+    return ds;
+  }
 }

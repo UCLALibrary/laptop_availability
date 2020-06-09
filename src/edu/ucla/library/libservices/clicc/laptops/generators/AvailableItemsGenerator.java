@@ -65,7 +65,8 @@ public class AvailableItemsGenerator
 
   public List<AvailableItems> getItems()
   {
-    makeConnection();
+	//makeConnection();
+	makeTestConnection();
 
     items =
         new JdbcTemplate( ds ).query( ITEMS_QUERY, new AvailableItemsMapper() );
@@ -74,7 +75,7 @@ public class AvailableItemsGenerator
 
   public AvailableItems getLocItems()
   {
-    makeConnection();
+    makeTestConnection();
     locItems = ( AvailableItems ) new JdbcTemplate(ds).queryForObject(LOC_QUERY, new Object[]{getLocation()}, new AvailableItemsMapper());
     return locItems;
   }
@@ -83,5 +84,10 @@ public class AvailableItemsGenerator
   {
     ds = DataSourceFactory.createDataSource( getDbName() );
     //ds = DataSourceFactory.createVgerSource();
+  }
+
+  private void makeTestConnection()
+  {
+	  ds = DataSourceFactory.createTestSource();
   }
 }

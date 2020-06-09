@@ -71,4 +71,16 @@ public class AvailableLaptopService
 
     return docMaker.getWidgetLaptops();
   }
+
+  public AvailableItemsGenerator getTestLaptops()
+  {
+	  AvailableItemsGenerator docMaker;
+
+      docMaker = new AvailableItemsGenerator();
+
+      docMaker.setDbName("vger");
+      docMaker.prepTestItems();
+
+      return docMaker;
+  }
 }
