@@ -66,6 +66,7 @@ public class DataSourceFactory
     ds = new DriverManagerDataSource();
     ds.setDriverClassName("oracle.jdbc.OracleDriver");
     ds.setUrl("jdbc:oracle:thin:@ils-db-test.library.ucla.edu:1521:VGER");
+    //ds.setUrl("jdbc:oracle:thin:@127.0.0.1:1521:VGER");
     ds.setUsername("ucla_preaddb");
     ds.setPassword("ucla_preaddb");
 

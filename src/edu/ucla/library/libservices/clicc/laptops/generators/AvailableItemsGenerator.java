@@ -63,6 +63,13 @@ public class AvailableItemsGenerator
         new JdbcTemplate( ds ).query( ITEMS_QUERY, new AvailableItemsMapper() );
   }
 
+  public void prepTestItems()
+  {
+    makeTestConnection();
+
+    items = new JdbcTemplate( ds ).query( ITEMS_QUERY, new AvailableItemsMapper() );
+  }
+
   public List<AvailableItems> getItems()
   {
 	//makeConnection();
