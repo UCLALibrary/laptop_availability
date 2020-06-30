@@ -17,11 +17,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class AvailableItemsGenerator
 {
   private static final String ITEMS_QUERY =
-    "SELECT \"loc\", \"chromebooks_in\", \"mac_laptops_in\",\"win_laptops_in\", \"ipads_in\" FROM "
-    + "vger_support.clicc_counts ORDER BY \"loc\"";
+    "SELECT \"LOC\", \"CHROMEBOOKS_IN\", \"MAC_LAPTOPS_IN\",\"WIN_LAPTOPS_IN\", \"IPADS_IN\" FROM "
+    + "VGER_SUPPORT.CLICC_COUNTS ORDER BY \"LOC\"";
   private static final String LOC_QUERY =
-    "SELECT \"loc\", \"chromebooks_in\", \"mac_laptops_in\",\"win_laptops_in\", \"ipads_in\" FROM "
-    + "vger_support.clicc_counts WHERE \"loc\" = ? ORDER BY \"loc\"";
+    "SELECT \"LOC\", \"CHROMEBOOKS_IN\", \"MAC_LAPTOPS_IN\",\"WIN_LAPTOPS_IN\", \"IPADS_IN\" FROM "
+    + "VGER_SUPPORT.CLICC_COUNTS WHERE \"LOC\" = ? ORDER BY \"LOC\"";
 
   private DataSource ds;
   private String dbName;
@@ -33,6 +33,16 @@ public class AvailableItemsGenerator
   public AvailableItemsGenerator()
   {
     super();
+  }
+
+  public void setDs( DataSource ds )
+  {
+    this.ds = ds;
+  }
+
+  private DataSource getDs()
+  {
+    return ds;
   }
 
   public void setDbName( String dbName )
@@ -65,25 +75,19 @@ public class AvailableItemsGenerator
 
   public void prepTestItems()
   {
-    makeTestConnection();
-
-    items = new JdbcTemplate( ds ).query( ITEMS_QUERY, new AvailableItemsMapper() );
+    items = new JdbcTemplate( getDs() ).query( ITEMS_QUERY, new AvailableItemsMapper() );
   }
 
   public List<AvailableItems> getItems()
   {
-	//makeConnection();
-	makeTestConnection();
-
     items =
-        new JdbcTemplate( ds ).query( ITEMS_QUERY, new AvailableItemsMapper() );
+        new JdbcTemplate( getDs() ).query( ITEMS_QUERY, new AvailableItemsMapper() );
     return items;
   }
 
   public AvailableItems getLocItems()
   {
-    makeTestConnection();
-    locItems = ( AvailableItems ) new JdbcTemplate(ds).queryForObject(LOC_QUERY, new Object[]{getLocation()}, new AvailableItemsMapper());
+    locItems = ( AvailableItems ) new JdbcTemplate( getDs() ).queryForObject(LOC_QUERY, new Object[]{getLocation()}, new AvailableItemsMapper());
     return locItems;
   }
 
@@ -91,10 +95,5 @@ public class AvailableItemsGenerator
   {
     ds = DataSourceFactory.createDataSource( getDbName() );
     //ds = DataSourceFactory.createVgerSource();
-  }
-
-  private void makeTestConnection()
-  {
-	  ds = DataSourceFactory.createTestSource();
   }
 }

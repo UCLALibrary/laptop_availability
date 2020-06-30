@@ -10,6 +10,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 
+import javax.sql.DataSource;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -72,13 +74,14 @@ public class AvailableLaptopService
     return docMaker.getWidgetLaptops();
   }
 
-  public AvailableItemsGenerator getTestLaptops()
+  public AvailableItemsGenerator getTestLaptops(DataSource ds)
   {
 	  AvailableItemsGenerator docMaker;
 
       docMaker = new AvailableItemsGenerator();
 
       docMaker.setDbName("vger");
+      docMaker.setDs( ds );
       docMaker.prepTestItems();
 
       return docMaker;
