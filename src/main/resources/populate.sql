@@ -1,5 +1,5 @@
-DELETE FROM VGER_SUPPORT.CLICC_COUNTS;
+DELETE FROM vger_support.clicc_counts;
 COMMIT;
-INSERT INTO VGER_SUPPORT.CLICC_COUNTS(LOC,CHROMEBOOKS_IN,MAC_LAPTOPS_IN,WIN_LAPTOPS_IN,IPADS_IN) VALUES ('Powell',5,10,15,20);
-INSERT INTO VGER_SUPPORT.CLICC_COUNTS(LOC,CHROMEBOOKS_IN,MAC_LAPTOPS_IN,WIN_LAPTOPS_IN,IPADS_IN) VALUES ('YRL',10,0,5,2);
+INSERT INTO vger_support.clicc_counts(loc,chromebooks_in,mac_laptops_in,win_laptops_in,ipads_in) VALUES ('Powell',5,10,15,20);
+INSERT INTO vger_support.clicc_counts(loc,chromebooks_in,mac_laptops_in,win_laptops_in,ipads_in) VALUES ('YRL',10,0,5,2);
 COMMIT;
