@@ -136,7 +136,7 @@
     <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-client</artifactId>
-      <version>2.29.1</version>
+      <version>2.34</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
@@ -178,7 +178,7 @@
     <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-server</artifactId>
-      <version>2.29.1</version>
+      <version>2.34</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
@@ -192,7 +192,7 @@
     <dependency>
       <groupId>org.glassfish.jersey.media</groupId>
       <artifactId>jersey-media-jaxb</artifactId>
-      <version>2.29.1</version>
+      <version>2.34</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
@@ -241,14 +241,14 @@
     <dependency>
       <groupId>org.glassfish.jersey.containers</groupId>
       <artifactId>jersey-container-servlet</artifactId>
-      <version>2.29.1</version>
+      <version>2.34</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.containers</groupId>
       <artifactId>jersey-container-servlet-core</artifactId>
-      <version>2.29.1</version>
+      <version>2.34</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
@@ -262,7 +262,7 @@
     <dependency>
       <groupId>org.glassfish.jersey.media</groupId>
       <artifactId>jersey-media-moxy</artifactId>
-      <version>2.29.1</version>
+      <version>2.34</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
@@ -304,7 +304,7 @@
     <dependency>
       <groupId>org.glassfish.jersey.ext</groupId>
       <artifactId>jersey-entity-filtering</artifactId>
-      <version>2.29.1</version>
+      <version>2.34</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
@@ -472,14 +472,14 @@
     <dependency>
       <groupId>org.glassfish.jersey.inject</groupId>
       <artifactId>jersey-hk2</artifactId>
-      <version>2.29.1</version>
+      <version>2.34</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.ext</groupId>
       <artifactId>jersey-spring5</artifactId>
-      <version>2.29.1</version>
+      <version>2.34</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
