@@ -8,7 +8,10 @@ import javax.servlet.ServletConfig;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 import javax.sql.DataSource;
 
@@ -30,8 +33,8 @@ public class AvailableLaptopService
   @GET
   @Produces( "application/json" )
   @ApiOperation(value = "returns counts of available laptops/tablets", httpMethod = "GET",
-                response = AvailableItemsGenerator.class, responseContainer = "List")
-  public AvailableItemsGenerator getLaptops()
+                response = AvailableItemsGenerator.class, responseContainer = "Response")
+  public Response getLaptops()
   {
     //AvailableLaptopGenerator docMaker;
     AvailableItemsGenerator docMaker;
@@ -41,9 +44,16 @@ public class AvailableLaptopService
     docMaker.setDbName( config.getServletContext().getInitParameter( "datasource.vger" ) );
     docMaker.prepItems();
 
-    return docMaker;
-  }
+    CacheControl cc = new CacheControl();
+    cc.setMaxAge(2100);
+    cc.setPrivate(true);
 
+    ResponseBuilder builder = Response.ok().entity(docMaker);
+    builder.cacheControl(cc);
+    return builder.build();
+
+    //return docMaker;
+  }
 
   @GET
   @Produces( "application/json" )

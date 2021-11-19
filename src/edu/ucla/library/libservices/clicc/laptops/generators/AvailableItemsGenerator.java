@@ -17,8 +17,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class AvailableItemsGenerator
 {
   private static final String ITEMS_QUERY =
-    "SELECT \"loc\", \"chromebooks_in\", \"mac_laptops_in\",\"win_laptops_in\", \"ipads_in\" FROM "
-    + "vger_support.clicc_counts ORDER BY \"loc\"";
+    "SELECT loc, chromebooks_in, mac_laptops_in, win_laptops_in, ipads_in FROM alma_counts ORDER By loc";
+    //"SELECT \"loc\", \"chromebooks_in\", \"mac_laptops_in\",\"win_laptops_in\", \"ipads_in\" FROM "
+    //+ "vger_support.clicc_counts ORDER BY \"loc\"";
   private static final String LOC_QUERY =
     "SELECT \"loc\", \"chromebooks_in\", \"mac_laptops_in\",\"win_laptops_in\", \"ipads_in\" FROM "
     + "vger_support.clicc_counts WHERE \"loc\" = ? ORDER BY \"loc\"";
