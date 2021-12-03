@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Jetty runner installed from the distro's package repo
+JETTY_RUNNER="/usr/share/java/jetty-runner.jar"
+
+# Tweak the default settings of some of Jetty's loggers
+LOGGERS="-Dorg.eclipse.jetty.annotations.LEVEL=OFF -Dorg.eclipse.jetty.runner.LEVEL=OFF"
+
+# Have java replace the shell so that signals work
+exec java $LOGGERS -jar $JETTY_RUNNER "$@"

@@ -1,28 +1,24 @@
 package edu.ucla.library.libservices.clicc.laptops.generators;
 
-import edu.ucla.library.libservices.clicc.laptops.beans.AvailableItems;
-import edu.ucla.library.libservices.clicc.laptops.db.mappers.AvailableItemsMapper;
-import edu.ucla.library.libservices.clicc.laptops.db.source.DataSourceFactory;
-
 import java.util.List;
 
 import javax.sql.DataSource;
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import edu.ucla.library.libservices.clicc.laptops.beans.AvailableItems;
+import edu.ucla.library.libservices.clicc.laptops.db.mappers.AvailableItemsMapper;
+import edu.ucla.library.libservices.clicc.laptops.db.source.DataSourceFactory;
+
 @XmlRootElement( name = "availableItems" )
 public class AvailableItemsGenerator
 {
   private static final String ITEMS_QUERY =
-    "SELECT loc, chromebooks_in, mac_laptops_in, win_laptops_in, ipads_in FROM alma_counts ORDER By loc";
-    //"SELECT \"loc\", \"chromebooks_in\", \"mac_laptops_in\",\"win_laptops_in\", \"ipads_in\" FROM "
-    //+ "vger_support.clicc_counts ORDER BY \"loc\"";
+          "SELECT loc, chromebooks_in, mac_laptops_in, win_laptops_in, ipads_in FROM vger_support.alma_counts ORDER By loc";
   private static final String LOC_QUERY =
-    "SELECT \"loc\", \"chromebooks_in\", \"mac_laptops_in\",\"win_laptops_in\", \"ipads_in\" FROM "
-    + "vger_support.clicc_counts WHERE \"loc\" = ? ORDER BY \"loc\"";
+          "SELECT loc, chromebooks_in, mac_laptops_in, win_laptops_in, ipads_in FROM vger_support.alma_counts WHERE loc = ?  ORDER By loc";
 
   private DataSource ds;
   private String dbName;
@@ -36,7 +32,7 @@ public class AvailableItemsGenerator
     super();
   }
 
-  public void setDs( DataSource ds )
+  public void setDs( final DataSource ds )
   {
     this.ds = ds;
   }
@@ -46,7 +42,7 @@ public class AvailableItemsGenerator
     return ds;
   }
 
-  public void setDbName( String dbName )
+  public void setDbName( final String dbName )
   {
     this.dbName = dbName;
   }
@@ -56,7 +52,7 @@ public class AvailableItemsGenerator
     return dbName;
   }
 
-  public void setLocation(String location)
+  public void setLocation(final String location)
   {
     this.location = location;
   }

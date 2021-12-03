@@ -1,6 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS vger_support;
 
-CREATE TABLE IF NOT EXISTS vger_support.clicc_counts
+CREATE TABLE IF NOT EXISTS vger_support.alma_counts
 (
 loc	        VARCHAR2(25),
 chromebooks_in	INT,
