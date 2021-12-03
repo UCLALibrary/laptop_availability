@@ -101,6 +101,7 @@
                         <outputDirectory>.</outputDirectory>
                         <includes>
                           <include>target/${service.name}.war</include>
+                          <include>src/main/docker/configs/logback.xml</include>
                           <include>src/main/docker/scripts/start-service</include>
                         </includes>
                       </fileSet>
@@ -208,6 +209,11 @@
     </resources>
   </build>
   <dependencies>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.7</version>
+    </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>

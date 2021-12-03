@@ -3,8 +3,11 @@
 # Jetty runner installed from the distro's package repo
 JETTY_RUNNER="/usr/share/java/jetty-runner.jar"
 
-# Tweak the default settings of some of Jetty's loggers
+# Tweak the default settings of some of Jetty's loggers [TODO: put in a log config file]
 LOGGERS="-Dorg.eclipse.jetty.annotations.LEVEL=OFF -Dorg.eclipse.jetty.runner.LEVEL=OFF"
 
+# Configure the application's logger
+LOG_CONFIG="-Dlogback.configurationFile=/etc/laptops/logback.xml"
+
 # Have java replace the shell so that signals work
-exec java $LOGGERS -jar $JETTY_RUNNER "$@"
+exec java $LOGGERS $LOG_CONFIG -jar $JETTY_RUNNER "$@"
