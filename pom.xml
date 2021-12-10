@@ -26,7 +26,15 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+    <!-- Name of service, application context, and war file -->
     <service.name>laptops</service.name>
+
+    <!-- JNDI configuration for testing purposes -->
+    <db.url>jdbc:oracle:thin:@localhost:1521:VGER</db.url>
+    <db.username>YOUR_USERNAME</db.username>
+    <db.password>YOUR_PASSWORD</db.password>
+    <db.datasource>oracle.jdbc.replay.OracleDataSourceImpl</db.datasource>
+    <db.pool.factory>oracle.ucp.jdbc.PoolDataSourceFactory</db.pool.factory>
 
     <!-- The Docker registry user and password used for publishing images -->
     <docker.registry.username />
@@ -89,7 +97,7 @@
               <build>
                 <args>
                   <ALPINE_VERSION>${docker.alpine.version}</ALPINE_VERSION>
-                  <SERVICE_WAR>${service.name}.war</SERVICE_WAR>
+                  <SERVICE_NAME>${service.name}</SERVICE_NAME>
                 </args>
                 <dockerFile>${project.basedir}/src/main/docker/Dockerfile</dockerFile>
                 <assembly>
@@ -115,6 +123,11 @@
                   <port>${test.http.port}:8080</port>
                 </ports>
                 <env>
+                  <DB_URL>${db.url}</DB_URL>
+                  <DB_USERNAME>${db.username}</DB_USERNAME>
+                  <DB_PASSWORD>${db.password}</DB_PASSWORD>
+                  <DB_DATASOURCE>${db.datasource}</DB_DATASOURCE>
+                  <DB_POOL_FACTORY>${db.pool.factory}</DB_POOL_FACTORY>
                 </env>
                 <wait>
                   <log>Started @</log>
@@ -190,6 +203,15 @@
             <version>5.6.2</version>
           </dependency>
         </dependencies>
+        <configuration>
+          <environmentVariables>
+            <DB_URL>${db.url}</DB_URL>
+            <DB_USERNAME>${db.username}</DB_USERNAME>
+            <DB_PASSWORD>${db.password}</DB_PASSWORD>
+            <DB_DATASOURCE>${db.datasource}</DB_DATASOURCE>
+            <DB_POOL_FACTORY>${db.pool.factory}</DB_POOL_FACTORY>
+          </environmentVariables>
+        </configuration>
       </plugin>
     </plugins>
     <resources>

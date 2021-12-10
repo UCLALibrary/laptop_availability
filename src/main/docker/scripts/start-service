@@ -1,13 +1,15 @@
 #!/bin/sh
 
-# Jetty runner installed from the distro's package repo
-JETTY_RUNNER="/usr/share/java/jetty-runner.jar"
+# Update our war file to include a runtime-built Jetty JNDI configuration
+unzip -oq "$1" WEB-INF/classes/edu/ucla/library/libservices/clicc/laptops/util/JettyEnvGenerator.class
+java -cp WEB-INF/classes edu.ucla.library.libservices.clicc.laptops.util.JettyEnvGenerator WEB-INF/jetty-env.xml
+zip -uq "$1" WEB-INF/jetty-env.xml
 
-# Tweak the default settings of some of Jetty's loggers [TODO: put in a log config file]
+# Clean up after ourselves so we don't leave cruft around
+rm -r WEB-INF
+
+# Tweak the default settings of some of Jetty's loggers [TODO: put in a log config file  or use logback]
 LOGGERS="-Dorg.eclipse.jetty.annotations.LEVEL=OFF -Dorg.eclipse.jetty.runner.LEVEL=OFF"
 
-# Configure the application's logger
-LOG_CONFIG="-Dlogback.configurationFile=/etc/laptops/logback.xml"
-
 # Have java replace the shell so that signals work
-exec java $LOGGERS $LOG_CONFIG -jar $JETTY_RUNNER "$@"
+exec java $LOGGERS -jar /usr/share/java/jetty-runner.jar "$@"

@@ -5,11 +5,13 @@
 # The version of Alpine that we use when creating this image
 ARG ALPINE_VERSION
 
+# Build our actual image
 FROM alpine:${ALPINE_VERSION}
 
-# The name of the Jar we're going to use for our Web service
-ARG SERVICE_WAR
-ARG SERVICE_ETC="/etc/laptops"
+# Build arguments used to build our Docker image
+ARG SERVICE_NAME
+ARG SERVICE_WAR="${SERVICE_NAME}.war"
+ARG SERVICE_ETC="/etc/${SERVICE_NAME}"
 
 # Define the Jetty environmental variables
 ENV JETTY_HOME="/usr/local/jetty"
@@ -25,14 +27,15 @@ COPY "maven/target/${SERVICE_WAR}" .
 COPY "maven/src/main/docker/scripts/start-service" "/usr/bin/start-service"
 
 # Install Jetty (which also pulls in OpenJDK as a dependency)
-RUN apk add jetty-runner
+RUN apk --no-cache add jetty-runner zip
+
+# Run as a generic system user, rather than as root
+RUN addgroup -S jetty && adduser --disabled-password --no-create-home -S jetty -G jetty \
+    && chown -R jetty:jetty "${JETTY_HOME}"
+USER jetty
 
 # Expose the port at which our Jetty server will run
 EXPOSE 8080
-
-# Run as a generic system user, rather than as root
-RUN addgroup -S jetty && adduser --disabled-password --no-create-home -S jetty -G jetty
-USER jetty
 
 # Start our service when the Docker container runs
 ENTRYPOINT sh -c "start-service ${JETTY_WAR}"
