@@ -22,3 +22,5 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn package
+    - name: Deploy with Jenkins
+      run: sh scripts/deploy.sh
