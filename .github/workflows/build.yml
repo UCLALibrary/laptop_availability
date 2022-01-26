@@ -6,7 +6,7 @@ name: Java CI with Maven
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ SERV-237 ]
 
 jobs:
   build:
