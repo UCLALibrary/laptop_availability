@@ -10,24 +10,18 @@ JENKINS_HOST=jenkins-devsupport.library.ucla.edu
 
 # Put in place private key for CI secret encrypted env variable.
 # Set required permissions for private key.
-echo "DEBUG: Create .ssh dir"
 mkdir -p -m 0700 ~/.ssh
-echo "DEBUG: Write priv key to .ssh dir"
 echo "${CI_WS_SSH_PRIV_KEY}" > ~/.ssh/id_rsa
-echo "DEBUG: Set permissions on priv key id_rsa file"
 chmod 0600 ~/.ssh/id_rsa
 
 # Add sftp site to known_hosts to avoid permanent hang on first sftp connection
-echo "DEBUG: Add appdeploy-sftp to known_hosts"
 ssh-keyscan appdeploy-sftp.library.ucla.edu >> ~/.ssh/known_hosts
-echo "DEBUG: Set permissions on known_hosts file"
 chmod 0644 ~/.ssh/known_hosts
 
 # Upload file(s) to sftp site in project-specific directory
 # Use sftp's batch mode (-b, with - for stdin) to throw/ignore errors:
 ## commands starting with - will show error messages, but not cause sftp
 ## to exit if an error occurs on those commands.  See man sftp for details.
-echo "DEBUG: Begin SFTP routine"
 (
   # sftp will exit if cd fails - must have/use build directory
   echo "cd build"
