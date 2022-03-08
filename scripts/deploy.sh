@@ -10,11 +10,13 @@ JENKINS_HOST=jenkins-devsupport.library.ucla.edu
 
 # Put in place private key for CI secret encrypted env variable.
 # Set required permissions for private key.
+mkdir -p -m 0700 ~/.ssh
 echo "${CI_WS_SSH_PRIV_KEY}" > ~/.ssh/id_rsa
-chmod 600 ~/.ssh/id_rsa
+chmod 0600 ~/.ssh/id_rsa
 
 # Add sftp site to known_hosts to avoid permanent hang on first sftp connection
 ssh-keyscan appdeploy-sftp.library.ucla.edu >> ~/.ssh/known_hosts
+chmod 0644 ~/.ssh/known_hosts
 
 # Upload file(s) to sftp site in project-specific directory
 # Use sftp's batch mode (-b, with - for stdin) to throw/ignore errors:
